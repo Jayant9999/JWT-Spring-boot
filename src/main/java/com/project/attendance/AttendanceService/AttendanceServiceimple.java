@@ -37,21 +37,14 @@ public class AttendanceServiceimple implements  AttendanceService{
 
     @Override
     public List<Student_Attendance> getAttendanceById(String Student_Id) {
-
-
-
         Iterable<Student_Attendance> sA1;
-
         List<Student_Attendance> attendaceList;
-
         sA1=ar.getAttendance1(Student_Id);
-
         Iterator<Student_Attendance> itr =sA1.iterator();
         attendaceList=new ArrayList<Student_Attendance>();
         while(itr.hasNext()){
             attendaceList.add(itr.next()) ;
         }
-
         return  attendaceList;
 
 

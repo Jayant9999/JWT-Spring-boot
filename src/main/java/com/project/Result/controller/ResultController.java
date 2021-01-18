@@ -14,7 +14,7 @@ public class ResultController {
         rs.updateResult(rt);
     }
     @GetMapping(value = "getResult/{uid}")
-    public Result_Table getRes(@PathVariable String uid){
+    public List<Result_Table> getRes(@PathVariable String uid){
         return rs.getResult(uid);
     }
 }

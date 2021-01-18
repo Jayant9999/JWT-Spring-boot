@@ -24,11 +24,16 @@ public class Result_service_impli implements result_service {
     }
 
     @Override
-    public Result_Table getResult(String uid) {
+    public List<Result_Table> getResult(String uid) {
 
-        Result_Table results;
-        results=rp.getRes(uid);
+        Iterable<Result_Table> itr;
+        itr=rp.getRes(uid);
+        List<Result_Table> resultList = new ArrayList<>();
+        Iterator<Result_Table> it = itr.iterator();
+        while(it.hasNext()){
+            resultList.add(it.next());
+        }
 
-        return  results;
+        return  resultList;
     }
 }

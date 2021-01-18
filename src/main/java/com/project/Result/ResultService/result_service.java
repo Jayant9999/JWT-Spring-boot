@@ -8,7 +8,7 @@ public interface result_service {
 
     public void updateResult(List<Result_Table> rt);
 
-    public Result_Table getResult(String uid);
+    public List<Result_Table> getResult(String uid);
 
 
 }

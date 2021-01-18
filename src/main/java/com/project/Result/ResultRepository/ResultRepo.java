@@ -9,6 +9,6 @@ import java.util.List;
 public interface ResultRepo extends JpaRepository<Result_Table ,Integer> {
 
         @Query(value ="select * from result_table where student_id =?1",nativeQuery = true)
-        public Result_Table getRes(String uid);
+        public List<Result_Table> getRes(String uid);
 
 }
