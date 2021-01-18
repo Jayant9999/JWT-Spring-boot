@@ -7,12 +7,21 @@ import javax.persistence.Id;
 public class Result_Table {
 
     @Id
+    String compid;
     String student_id;
     int Student_class;
     String subject;
     int max_marks;
     int obt_marks;
     String exam_date;
+
+    public String getCompid() {
+        return compid;
+    }
+
+    public void setCompid(String compid) {
+        this.compid = compid;
+    }
 
     public String getStudent_id() {
         return student_id;
@@ -65,7 +74,8 @@ public class Result_Table {
     @Override
     public String toString() {
         return "Result_Table{" +
-                "student_id='" + student_id + '\'' +
+                "compid='" + compid + '\'' +
+                ", student_id='" + student_id + '\'' +
                 ", Student_class=" + Student_class +
                 ", subject='" + subject + '\'' +
                 ", max_marks=" + max_marks +
