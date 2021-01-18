@@ -20,4 +20,8 @@ public interface userRepository extends JpaRepository <UserData , Integer > {
         @Modifying
         @Query(value = "update user_data set password =?1 where email_id = ?2 and mobile_no = ?3 and security_q_a = ?5 and security_q_id = ?4",nativeQuery = true)
         public int updatePassword( String password ,String email,String mobile , String qId , String qA);
+
+
+        public UserData findByuserId(String id);
+
 }

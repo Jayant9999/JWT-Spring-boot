@@ -45,6 +45,8 @@ public class userServiceImple implements  userService{
         ud1.setRole_id(udc.getRole_id());
         ud1.setState(udc.getState());
         ud1.setCountry(udc.getCountry());
+        ud1.setDob(udc.getDob());
+        ud1.setGender(udc.getGender());
         String id = String.valueOf(udc.getRole_id());
         int year = Year.now().getValue();
         String y = String.valueOf(year);
@@ -150,8 +152,8 @@ public class userServiceImple implements  userService{
     }
 
     @Override
-    public UserData getUser(int id) {
-        return null;
+    public UserData getUser(String id) {
+        return ur.findByuserId(id);
     }
 
     @Override

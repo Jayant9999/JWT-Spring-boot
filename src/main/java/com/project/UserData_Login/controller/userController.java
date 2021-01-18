@@ -50,6 +50,10 @@ public class userController {
         return  res;
     }
 
+    @GetMapping(value = "userDetails/{id}")
+    public UserData ud(@PathVariable String id){
+        return  UserService.getUser(id);
+    }
 
 
 

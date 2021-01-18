@@ -11,7 +11,7 @@ public interface userService {
     public void addUserSep(USerDataComplete u) throws MessagingException;
     public void addUser(UserData user);
     public void removeUser(int id);
-    public UserData getUser(int id);
+    public UserData getUser(String id);
     public void modifyUser(UserData user);
     public List<UserData> getAll();
     public UserData UserLogin(UserData user);

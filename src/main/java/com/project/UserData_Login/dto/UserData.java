@@ -97,26 +97,6 @@ public class UserData {
         this.isApproved = isApproved;
     }
 
-    @Override
-    public String toString() {
-        return "UserData{" +
-                "userId='" + userId + '\'' +
-                ", fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", role_id=" + role_id +
-                ", email_id='" + email_id + '\'' +
-                ", mobile_no='" + mobile_no + '\'' +
-                ", password='" + password + '\'' +
-                ", security_q_id='" + security_q_id + '\'' +
-                ", security_q_A='" + security_q_A + '\'' +
-                ", isApproved=" + isApproved +
-                '}';
-    }
-
     @Id
     String userId;
     @Column(nullable = false)
@@ -170,4 +150,45 @@ public class UserData {
         this.password = password;
     }
     int isApproved;
+    String dob;
+
+    @Override
+    public String toString() {
+        return "UserData{" +
+                "userId='" + userId + '\'' +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", role_id=" + role_id +
+                ", email_id='" + email_id + '\'' +
+                ", mobile_no='" + mobile_no + '\'' +
+                ", password='" + password + '\'' +
+                ", security_q_id='" + security_q_id + '\'' +
+                ", security_q_A='" + security_q_A + '\'' +
+                ", isApproved=" + isApproved +
+                ", dob='" + dob + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+
+    String gender;
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
