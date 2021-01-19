@@ -15,4 +15,6 @@ public interface StudentRepository extends JpaRepository<student_table, Integer>
         @Query(value = "select * from student_table where user_id_parent =?1",nativeQuery = true)
         public List<student_table> getStudentsByPid(String pId);
 
+        @Query(value = "select * from student_table where user_id_student =?",nativeQuery = true)
+        public student_table findByuser_id_student(String id);
 }

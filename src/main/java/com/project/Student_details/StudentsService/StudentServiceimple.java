@@ -22,6 +22,15 @@ public class StudentServiceimple implements StudentService {
 
     }
 
+    public int getStudentclass(String id){
+        int cls;
+        student_table st;
+        st= sr.findByuser_id_student(id);
+        cls=st.getStudent_class();
+        return cls;
+
+    }
+
     @Override
     public List<student_table> getAll(int s_class) {
 

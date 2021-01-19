@@ -11,5 +11,5 @@ public interface StudentService {
     public List<student_table> getAll(int s_class);
     public void addDetails(student_table st);
     public List<student_table> getStudentForParent(String pId);
-
+    public int getStudentclass(String id);
 }

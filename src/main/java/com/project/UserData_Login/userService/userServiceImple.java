@@ -32,7 +32,8 @@ public class userServiceImple implements  userService{
     private facultyService fs;
     int flag=0;
     @Override
-    public void addUserSep(USerDataComplete udc) throws MessagingException {
+    public UserData addUserSep(USerDataComplete udc) throws MessagingException {
+        UserData r =new UserData();
         System.out.println(udc);
         UserData ud1 = new UserData();
         UserData ud2 = new UserData();
@@ -101,16 +102,18 @@ public class userServiceImple implements  userService{
         }
         if(flag!=0){
             System.out.println("flag >1");
+            flag =0;
+            return null;
         }else{
             flag=0;
             System.out.println("falg=0");
-            addUser(ud1);
+            r=addUser(ud1);
 
             mail.send(ud1.getEmail_id(),"School E Diary" , "Registration Successful");
             System.out.println("ud1");
                 if (ud2.getfName() == null) {
             } else {
-               addUser(ud2);
+              r= addUser(ud2);
              System.out.println("ud2");
             }
             System.out.println(" *** "+udc.getStudent_class());
@@ -136,14 +139,13 @@ public class userServiceImple implements  userService{
                 fs.addFaculty(f);
             }
         }
+        return r;
     }
 
     @Override
-    public void addUser(UserData user) {
+    public UserData addUser(UserData user) {
         System.out.println(flag);
-    ur.save(user);
-
-
+    return  ur.save(user);
     }
 
     @Override

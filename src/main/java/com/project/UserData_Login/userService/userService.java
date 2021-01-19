@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface userService {
 
-    public void addUserSep(USerDataComplete u) throws MessagingException;
-    public void addUser(UserData user);
+    public UserData addUserSep(USerDataComplete u) throws MessagingException;
+    public UserData addUser(UserData user);
     public void removeUser(int id);
     public UserData getUser(String id);
     public void modifyUser(UserData user);

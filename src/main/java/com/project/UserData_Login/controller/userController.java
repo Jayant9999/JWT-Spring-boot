@@ -21,9 +21,12 @@ public class userController {
     @Autowired
     private facultyService fs;
     @PostMapping(value = "user_reg")
-    public void userReg(@RequestBody USerDataComplete udc) throws MessagingException {
-        UserService.addUserSep(udc);
+    public UserData userReg(@RequestBody USerDataComplete udc) throws MessagingException {
 
+        UserData ud ;
+        ud =UserService.addUserSep(udc);
+        System.out.println(ud);
+        return  ud;
     }
     @PostMapping(value = "login")
     public UserData login(@RequestBody UserData userdata){

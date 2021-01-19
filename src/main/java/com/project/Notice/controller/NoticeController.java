@@ -11,7 +11,7 @@ public class NoticeController {
     @Autowired
     private NoticeService service;
 
-    @RequestMapping(value = "/Test", method = RequestMethod.POST)
+    @RequestMapping(value = "/notice", method = RequestMethod.POST)
     @ResponseBody
     public List<Notice_Table> GNotice(@RequestBody Notice_Table notice) {
         System.out.println(notice.getStudent_class() + " " + notice.getDate_to()+ " " + notice.getNotice_id());
@@ -19,7 +19,7 @@ public class NoticeController {
         return service.GlobalNotice(notice.getDate_to());
     }
 
-    @RequestMapping(value = "/Test/class", method = RequestMethod.POST)
+    @RequestMapping(value = "/notice/class", method = RequestMethod.POST)
     @ResponseBody
     public List<Notice_Table> CNotice(@RequestBody Notice_Table notice) {
         System.out.println(notice.getStudent_class() + " " + notice.getDate_to()+ " " + notice.getNotice_id());

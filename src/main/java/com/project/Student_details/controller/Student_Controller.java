@@ -37,4 +37,12 @@ public class Student_Controller {
         }
 
 
+    @GetMapping(value="getStudentclass/{pId}")
+    public int studentclass(@PathVariable String pId){
+       int student_class ;
+        student_class =sserService.getStudentclass(pId);
+        return student_class;
+    }
+
+
 }
