@@ -54,6 +54,16 @@ public class AttendanceServiceimple implements  AttendanceService{
     @Override
     public void addAttendance(List<Student_Attendance> sa)
     {
-        ar.saveAll(sa);
+        List<Student_Attendance> list = new ArrayList<>(sa);
+        for(int i = 0 ; i<list.size();i++){
+            list.get(i).setCompid(list.get(i).getStudent_id()+list.get(i).getAtt_date());
+        }
+
+        for(int i = 0 ; i<list.size();i++){
+            System.out.println(list.get(i));
+        }
+
+
+        ar.saveAll(list);
     }
 }
