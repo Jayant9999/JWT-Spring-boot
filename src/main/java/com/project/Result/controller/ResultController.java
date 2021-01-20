@@ -17,4 +17,6 @@ public class ResultController {
     public List<Result_Table> getRes(@PathVariable String uid){
         return rs.getResult(uid);
     }
+
+
 }

@@ -45,6 +45,7 @@ public class AttendanceServiceimple implements  AttendanceService{
         while(itr.hasNext()){
             attendaceList.add(itr.next()) ;
         }
+        System.out.println(attendaceList);
         return  attendaceList;
 
 

@@ -32,6 +32,7 @@ public class Attendance_controller {
     public List<Student_Attendance> ss1(@PathVariable String uid){
         List<Student_Attendance> sa;
         sa=ss.getAttendanceById(uid);
+        System.out.println(sa);
         return sa;
     }
 

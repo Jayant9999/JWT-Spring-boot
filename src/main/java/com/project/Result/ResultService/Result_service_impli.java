@@ -20,7 +20,14 @@ public class Result_service_impli implements result_service {
 
     @Override
     public void updateResult(List<Result_Table> rt) {
-        rp.saveAll(rt);
+
+        List<Result_Table> list = new ArrayList<>(rt);
+       for(int i=0;i<list.size();i++){
+
+           list.get(i).setCompid(list.get(i).getStudent_id()+list.get(i).getExam_date());
+       }
+
+        rp.saveAll(list);
     }
 
     @Override

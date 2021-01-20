@@ -38,10 +38,13 @@ public class Student_Controller {
 
 
     @GetMapping(value="getStudentclass/{pId}")
-    public int studentclass(@PathVariable String pId){
+    public student_table studentclass(@PathVariable String pId){
        int student_class ;
+       student_table stu = new student_table();
         student_class =sserService.getStudentclass(pId);
-        return student_class;
+        stu.setStudent_class(student_class);
+        System.out.println("==>"+student_class);
+        return stu;
     }
 
 

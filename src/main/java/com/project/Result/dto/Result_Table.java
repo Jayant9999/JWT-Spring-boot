@@ -9,7 +9,16 @@ public class Result_Table {
     @Id
     String compid;
     String student_id;
-    int Student_class;
+    int student_class;
+
+    public int getStudent_class() {
+        return student_class;
+    }
+
+    public void setStudent_class(int student_class) {
+        this.student_class = student_class;
+    }
+
     String subject;
     int max_marks;
     int obt_marks;
@@ -31,13 +40,6 @@ public class Result_Table {
         this.student_id = student_id;
     }
 
-    public int getStudent_class() {
-        return Student_class;
-    }
-
-    public void setStudent_class(int student_class) {
-        Student_class = student_class;
-    }
 
     public String getSubject() {
         return subject;
@@ -76,7 +78,7 @@ public class Result_Table {
         return "Result_Table{" +
                 "compid='" + compid + '\'' +
                 ", student_id='" + student_id + '\'' +
-                ", Student_class=" + Student_class +
+                ", student_class=" + student_class +
                 ", subject='" + subject + '\'' +
                 ", max_marks=" + max_marks +
                 ", obt_marks=" + obt_marks +
