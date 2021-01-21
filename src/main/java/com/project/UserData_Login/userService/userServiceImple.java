@@ -8,20 +8,25 @@ import com.project.UserData_Login.dto.UserData;
 import com.project.UserData_Login.repository.userRepository;
 import com.project.faculty.dto.faculty;
 import com.project.faculty.facultyService.facultyService;
-import org.jooq.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-@Service
-public class userServiceImple implements  userService{
+@Service ("userService")
+public class userServiceImple implements UserDetailsService, userService{
 
-
+    @Autowired
+    private userRepository userDao;
     @Autowired
     private MailFeature mail;
     @Autowired
@@ -31,6 +36,9 @@ public class userServiceImple implements  userService{
     @Autowired
     private facultyService fs;
     int flag=0;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
     public UserData addUserSep(USerDataComplete udc) throws MessagingException {
         UserData r =new UserData();
@@ -54,8 +62,8 @@ public class userServiceImple implements  userService{
         String UiD = (id+udc.getMobile_no());
         String HUID = String.valueOf(UiD.hashCode());
         ud1.setUserId(y+"-"+HUID);
-        String pass = String.valueOf(udc.getPassword().hashCode());
-        ud1.setPassword(pass);
+        // String pass = String.valueOf(udc.getPassword().hashCode());
+        ud1.setPassword(bCryptPasswordEncoder.encode(udc.getPassword()));
         ud1.setSecurity_q_id(udc.getSecurityQuestionId_S());
         ud1.setSecurity_q_A(udc.getsQanswer_S());
     //================ForParentAsUSer=====================
@@ -195,5 +203,23 @@ public class userServiceImple implements  userService{
         String pass = String.valueOf(userdata.getPassword().hashCode());
         System.out.println(pass+" "+userdata.getEmail_id()+" "+userdata.getMobile_no()+" "+userdata.getSecurity_q_id()+" "+userdata.getSecurity_q_A());
         return ur.updatePassword(pass,userdata.getEmail_id(),userdata.getMobile_no(),userdata.getSecurity_q_id(),userdata.getSecurity_q_A());
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String loginEmail) throws UsernameNotFoundException {
+        UserData user = userDao.findByEmail_id(loginEmail);
+        if(user == null){
+            throw new UsernameNotFoundException("Invalid username or password.");
+        }
+        return new org.springframework.security.core.userdetails.User(user.getEmail_id(), user.getPassword(), getAuthority());
+    }
+
+    @Override
+    public UserData findOne(String username) {
+        return ur.findByEmail_id(username);
+    }
+
+    private List<SimpleGrantedAuthority> getAuthority() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
 }

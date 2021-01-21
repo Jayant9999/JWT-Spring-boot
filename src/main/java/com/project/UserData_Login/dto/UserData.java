@@ -191,4 +191,8 @@ public class UserData {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public String getUsername() {
+        return getEmail_id();
+    }
 }
