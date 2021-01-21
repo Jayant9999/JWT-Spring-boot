@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -35,6 +36,12 @@ public class AuthenticationController {
 
     @GetMapping(value = "/validate")
     public void  validateSession() {
+    }
+
+    @GetMapping(value="/logout")
+    public void logout() {
+        // No way to clear JWT from server. Option => Blacklist
+        SecurityContextHolder.clearContext();
     }
 
 }
