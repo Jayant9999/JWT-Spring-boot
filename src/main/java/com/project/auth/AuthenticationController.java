@@ -26,10 +26,11 @@ public class AuthenticationController {
     @PostMapping(value = "/login")
     public ApiResponse<AuthToken> register(@RequestBody UserData loginUser) throws AuthenticationException {
 
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
-        final UserData user = userService.findOne(loginUser.getUsername());
+
+        final UserData user = userService.findOne(loginUser.getEmail_id());
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserId(), loginUser.getPassword()));
         final String token = jwtTokenUtil.generateToken(user);
-        return new ApiResponse<>(200, "success",new AuthToken(token, user.getUsername()), user);
+        return new ApiResponse<>(200, "success",new AuthToken(token, user.getUserId()), user);
     }
 
     @GetMapping(value = "/validate")

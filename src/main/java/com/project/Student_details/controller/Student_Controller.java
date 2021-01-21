@@ -3,6 +3,7 @@ package com.project.Student_details.controller;
 import com.project.Student_details.StudentsService.StudentService;
 import com.project.Student_details.dto.student_table;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class Student_Controller {
 
     @GetMapping(value="getStudentclass/{pId}")
     public student_table studentclass(@PathVariable String pId){
-       int student_class ;
+           int student_class ;
        student_table stu = new student_table();
         student_class =sserService.getStudentclass(pId);
         stu.setStudent_class(student_class);

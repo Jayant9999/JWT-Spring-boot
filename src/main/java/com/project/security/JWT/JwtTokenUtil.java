@@ -42,7 +42,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public String generateToken(UserData user) {
-        return doGenerateToken(user.getEmail_id());
+        return doGenerateToken(user.getUserId());
     }
 
     private String doGenerateToken(String subject) {

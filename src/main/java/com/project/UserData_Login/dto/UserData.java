@@ -193,6 +193,6 @@ public class UserData {
     }
 
     public String getUsername() {
-        return getEmail_id();
+        return getUserId();
     }
 }

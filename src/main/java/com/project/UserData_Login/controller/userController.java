@@ -7,6 +7,7 @@ import com.project.faculty.facultyService.facultyService;
 import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.jooq.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;

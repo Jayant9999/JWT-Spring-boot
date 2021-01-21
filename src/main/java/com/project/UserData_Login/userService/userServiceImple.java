@@ -206,12 +206,12 @@ public class userServiceImple implements UserDetailsService, userService{
     }
 
     @Override
-    public UserDetails loadUserByUsername(String loginEmail) throws UsernameNotFoundException {
-        UserData user = userDao.findByEmail_id(loginEmail);
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        UserData user = userDao.findByUserId(userId);
         if(user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail_id(), user.getPassword(), getAuthority());
+        return new org.springframework.security.core.userdetails.User(user.getUserId(), user.getPassword(), getAuthority());
     }
 
     @Override

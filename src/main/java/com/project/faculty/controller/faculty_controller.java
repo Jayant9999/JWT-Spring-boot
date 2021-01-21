@@ -3,6 +3,7 @@ package com.project.faculty.controller;
 import com.project.faculty.dto.faculty;
 import com.project.faculty.facultyService.facultyServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,7 @@ public class faculty_controller {
     @GetMapping(value = "get_class/{id}")
     public faculty getcls(@PathVariable String id){
         System.out.println(id);
-        faculty fd =new faculty();
-       fd=fsi.getClass(id);
+        faculty fd = fsi.getClass(id);
         System.out.println(fd);
         return  fd;
     }
